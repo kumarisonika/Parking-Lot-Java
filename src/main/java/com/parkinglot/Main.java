@@ -20,7 +20,7 @@ public class Main{
         System.out.println(parkingLot.park(carI20));
 
         ArrayList<ParkingSpot> parkingSpotStat = parkingLot.getParkingLotStats();
-        for(ParkingSpot spot: parkingSpotStat) System.out.println(spot.getTheParkedVehicleNumber());
+        for(ParkingSpot spot: parkingSpotStat) System.out.println(spot.isFree());
 
 
     }
