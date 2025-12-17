@@ -11,10 +11,9 @@ public class ParkingLot{
 
     String park(Vehicle vehicle){
         for(ParkingSpot spot: parkingSpots){
-            System.out.println(spot.supportedType+" shdjs");
+
             if(spot.canPark(vehicle)){
                 spot.park(vehicle);
-
                 return "Vehicle sucessfully parked!";
             }
         }

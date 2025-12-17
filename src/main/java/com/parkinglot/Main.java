@@ -7,8 +7,8 @@ public class Main{
         ArrayList<ParkingSpot> spots = new ArrayList<>();
 
         spots.add(new ParkingSpot(VehicleType.BIKE));
-        spots.add(new ParkingSpot(VehicleType.BIKE));
-        spots.add(new ParkingSpot(VehicleType.BIKE));
+        spots.add(new ParkingSpot(VehicleType.CAR));
+        spots.add(new ParkingSpot(VehicleType.TRUCK));
         spots.add(new ParkingSpot(VehicleType.BIKE));
 
         ParkingLot parkingLot = new ParkingLot(spots);
@@ -20,7 +20,7 @@ public class Main{
         System.out.println(parkingLot.park(carI20));
 
         ArrayList<ParkingSpot> parkingSpotStat = parkingLot.getParkingLotStats();
-        for(ParkingSpot spot: parkingSpotStat) System.out.println(spot.isFree());
+        for(ParkingSpot spot: parkingSpotStat) System.out.println(spot.getTheParkedVehicleNumber());
 
 
     }

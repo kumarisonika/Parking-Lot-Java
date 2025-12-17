@@ -4,7 +4,7 @@ public class ParkingSpot{
     private Vehicle vehicle;
     public VehicleType supportedType;
 
-    public ParkingSpot(VehicleType supportedTypes){
+    public ParkingSpot(VehicleType supportedType){
         this.supportedType = supportedType;
     }
 
