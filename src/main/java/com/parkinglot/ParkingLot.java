@@ -1,5 +1,6 @@
 package com.parkinglot;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class ParkingLot{
 
@@ -9,20 +10,21 @@ public class ParkingLot{
         this.parkingSpots = parkingSpots;
     }
 
-    String park(Vehicle vehicle){
+    public ParkingTicket park(Vehicle vehicle){
         for(ParkingSpot spot: parkingSpots){
 
             if(spot.canPark(vehicle)){
                 spot.park(vehicle);
-                return "Vehicle sucessfully parked!";
+                return new ParkingTicket(UUID.randomUUID().toString(), vehicle,spot);
             }
         }
-        return "No empty spots left!";
+        return null;
     }
 
-    String unPark(ParkingSpot parkingSpot){
-        parkingSpot.unPark();
-        return "vehicle was successfully nunparked!";
+    public String unPark(ParkingTicket ticket){
+        ParkingSpot spot = ticket.getParkingSpot();
+        spot.unPark();
+        return "vehicle was successfully unparked!";
     }
 
     ArrayList<ParkingSpot> getParkingLotStats(){

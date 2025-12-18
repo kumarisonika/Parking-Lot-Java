@@ -16,6 +16,8 @@ public class Main{
         Vehicle scootyJupiter = new Bike("KA-01-JC-1811");
         Vehicle carI20 = new Car("KA-04-HG-2322");
 
+
+
         System.out.println(parkingLot.park(scootyJupiter));
         System.out.println(parkingLot.park(carI20));
 
