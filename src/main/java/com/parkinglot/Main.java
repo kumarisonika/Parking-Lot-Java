@@ -10,17 +10,25 @@ public class Main{
         spots.add(new ParkingSpot(VehicleType.CAR));
         spots.add(new ParkingSpot(VehicleType.TRUCK));
         spots.add(new ParkingSpot(VehicleType.BIKE));
+        spots.add(new ParkingSpot(VehicleType.HELICOPTER));
+        spots.add(new ParkingSpot(VehicleType.HELICOPTER));
 
         ParkingLot parkingLot = new ParkingLot(spots);
 
-        Vehicle bike = new Bike("KA-01-JC-1811");
-        Vehicle carI20 = new Car("KA-04-HG-2322");
+        Vehicle bike1 = new Bike("KA-01-JC-1811");
+        Vehicle car1 = new Car("PEA-23-sd234-heli");
+        Vehicle helicopter1 = new Helicopter("PEA-23-sd234-heli");
 
-        ParkingTicket parkingTicket_bike = parkingLot.park(bike);
-//        ParkingTicket parkingTicket_car = parkingLot.park(carI20);
+        ParkingTicket parkingTicket_bike = parkingLot.park(bike1);
+        ParkingTicket parkingTicket_car = parkingLot.park(car1);
+        ParkingTicket parkingTicket_helicopter = parkingLot.park(helicopter1);
 
-        int amount= parkingLot.unPark(parkingTicket_bike);
-        System.out.println("Parking fee: "+ amount);
+        int bikeAmount= parkingLot.unPark(parkingTicket_bike);
+        int carAmount= parkingLot.unPark(parkingTicket_car);
+        int heliAmount= parkingLot.unPark(parkingTicket_helicopter);
+        System.out.println("Bike parking fee: "+ bikeAmount);
+        System.out.println("Car parking fee: "+ carAmount);
+        System.out.println("Helicopter parking fee: "+ heliAmount);
 
     }
 }

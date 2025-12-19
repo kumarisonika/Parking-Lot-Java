@@ -16,8 +16,7 @@ public class ParkingTicket {
         this.vehicle=vehicle;
         this.parkingSpot=parkingSpot;
         this.entryTime= LocalDateTime.now();
-        this.status= TicketStatus.ACTIVE;
-
+        this.status = TicketStatus.ACTIVE;
     }
 
     public String getTicketId(){ return ticketId; }
@@ -35,8 +34,8 @@ public class ParkingTicket {
     }
 
     void close(){
-        this.exitTime= LocalDateTime.now();
-        this.status= TicketStatus.CLOSED;
+        this.exitTime = LocalDateTime.now();
+        this.status = TicketStatus.CLOSED;
     }
 
     public Duration getParkingDuration(){
