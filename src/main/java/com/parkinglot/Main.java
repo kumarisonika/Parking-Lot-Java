@@ -16,8 +16,6 @@ public class Main{
         Vehicle scootyJupiter = new Bike("KA-01-JC-1811");
         Vehicle carI20 = new Car("KA-04-HG-2322");
 
-
-
         ParkingTicket parkingTicket_bike = parkingLot.park(scootyJupiter);
         ParkingTicket parkingTicket_car = parkingLot.park(carI20);
 
