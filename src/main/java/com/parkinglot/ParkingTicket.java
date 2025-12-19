@@ -1,6 +1,5 @@
 package com.parkinglot;
 
-import java.awt.*;
 import java.time.LocalDateTime;
 
 public class ParkingTicket {
@@ -8,12 +7,14 @@ public class ParkingTicket {
     private Vehicle vehicle;
     private ParkingSpot parkingSpot;
     private LocalDateTime entryTime;
+    private TicketStatus status;
 
     public ParkingTicket(String ticketId, Vehicle vehicle, ParkingSpot parkingSpot){
         this.ticketId= ticketId;
         this.vehicle=vehicle;
         this.parkingSpot=parkingSpot;
         this.entryTime= LocalDateTime.now();
+        this.status= TicketStatus.ACTIVE;
     }
 
     public String getTicketId(){ return ticketId; }
@@ -24,5 +25,13 @@ public class ParkingTicket {
 
     public LocalDateTime getEntryTime(){
         return entryTime;
+    }
+
+    public TicketStatus getStatus(){
+        return status;
+    }
+
+    void close(){
+        this.status= TicketStatus.CLOSED;
     }
 }

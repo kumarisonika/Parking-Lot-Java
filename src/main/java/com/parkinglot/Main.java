@@ -18,11 +18,13 @@ public class Main{
 
 
 
-        System.out.println(parkingLot.park(scootyJupiter));
-        System.out.println(parkingLot.park(carI20));
+        ParkingTicket parkingTicket_bike = parkingLot.park(scootyJupiter);
+        ParkingTicket parkingTicket_car = parkingLot.park(carI20);
 
-        ArrayList<ParkingSpot> parkingSpotStat = parkingLot.getParkingLotStats();
-        for(ParkingSpot spot: parkingSpotStat) System.out.println(spot.isFree());
+        System.out.println(parkingTicket_bike.getEntryTime()+" "+parkingTicket_bike.getVehicle().getVehicleNumber());
+
+        parkingLot.unPark(parkingTicket_bike);
+        parkingLot.unPark(parkingTicket_bike);
 
 
     }

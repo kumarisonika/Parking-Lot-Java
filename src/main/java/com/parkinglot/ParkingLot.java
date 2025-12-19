@@ -12,7 +12,6 @@ public class ParkingLot{
 
     public ParkingTicket park(Vehicle vehicle){
         for(ParkingSpot spot: parkingSpots){
-
             if(spot.canPark(vehicle)){
                 spot.park(vehicle);
                 return new ParkingTicket(UUID.randomUUID().toString(), vehicle,spot);
@@ -21,10 +20,11 @@ public class ParkingLot{
         return null;
     }
 
-    public String unPark(ParkingTicket ticket){
+    public void unPark(ParkingTicket ticket){
+        if(ticket.getStatus() == TicketStatus.CLOSED) throw new IllegalStateException("Ticket already used!");
         ParkingSpot spot = ticket.getParkingSpot();
         spot.unPark();
-        return "vehicle was successfully unparked!";
+        ticket.close();
     }
 
     ArrayList<ParkingSpot> getParkingLotStats(){
