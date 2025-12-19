@@ -1,5 +1,6 @@
 package com.parkinglot;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class ParkingTicket {
@@ -8,7 +9,7 @@ public class ParkingTicket {
     private ParkingSpot parkingSpot;
     private LocalDateTime entryTime;
     private TicketStatus status;
-    private double pricing;
+    private LocalDateTime exitTime;
 
     public ParkingTicket(String ticketId, Vehicle vehicle, ParkingSpot parkingSpot){
         this.ticketId= ticketId;
@@ -16,7 +17,7 @@ public class ParkingTicket {
         this.parkingSpot=parkingSpot;
         this.entryTime= LocalDateTime.now();
         this.status= TicketStatus.ACTIVE;
-        this.pricing= 0;
+
     }
 
     public String getTicketId(){ return ticketId; }
@@ -33,16 +34,13 @@ public class ParkingTicket {
         return status;
     }
 
-    double close(){
-        //calculate pricing when closing the ticket
-        if(parkingSpot.supportedType==VehicleType.BIKE){
-            pricing=10;
-        }else if(parkingSpot.supportedType==VehicleType.CAR){
-            pricing=50;
-        }else{
-            pricing=70;
-        }
+    void close(){
+        this.exitTime= LocalDateTime.now();
         this.status= TicketStatus.CLOSED;
-        return pricing;
+    }
+
+    public Duration getParkingDuration(){
+        if(exitTime==null) throw new IllegalStateException("Vehicle not exited yet");
+        return Duration.between(entryTime,exitTime);
     }
 }

@@ -22,7 +22,6 @@ public class ParkingSpot{
     }
 
     void unPark(){
-
         this.vehicle=null;
     }
 

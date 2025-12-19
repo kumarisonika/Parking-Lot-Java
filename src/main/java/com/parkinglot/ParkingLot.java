@@ -20,11 +20,15 @@ public class ParkingLot{
         return null;
     }
 
-    public double unPark(ParkingTicket ticket){
+    public int unPark(ParkingTicket ticket){
         if(ticket.getStatus() == TicketStatus.CLOSED) throw new IllegalStateException("Ticket already used!");
         ParkingSpot spot = ticket.getParkingSpot();
         spot.unPark();
-        return ticket.close();
+        ticket.close();
+
+        PricingStrategy strategy =  PricingStrategyFactory.getStrategy(ticket.getVehicle().getType());
+
+        return strategy.calculatePrice(ticket.getParkingDuration());
     }
 
     ArrayList<ParkingSpot> getParkingLotStats(){
