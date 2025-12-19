@@ -1,19 +1,26 @@
 package com.parkinglot;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main{
     public static void main(String[] args){
-        ArrayList<ParkingSpot> spots = new ArrayList<>();
+        List<ParkingSpot> floor1Spots = new ArrayList<>();
+        floor1Spots.add(new ParkingSpot(VehicleType.BIKE));
+        floor1Spots.add(new ParkingSpot(VehicleType.CAR));
 
-        spots.add(new ParkingSpot(VehicleType.BIKE));
-        spots.add(new ParkingSpot(VehicleType.CAR));
-        spots.add(new ParkingSpot(VehicleType.TRUCK));
-        spots.add(new ParkingSpot(VehicleType.BIKE));
-        spots.add(new ParkingSpot(VehicleType.HELICOPTER));
-        spots.add(new ParkingSpot(VehicleType.HELICOPTER));
+        List<ParkingSpot> floor2Spots = new ArrayList<>();
+        floor2Spots.add(new ParkingSpot(VehicleType.TRUCK));
+        floor2Spots.add(new ParkingSpot(VehicleType.HELICOPTER));
 
-        ParkingLot parkingLot = new ParkingLot(spots);
+        ParkingFloor floor1 = new ParkingFloor("F1", floor1Spots);
+        ParkingFloor floor2 = new ParkingFloor("F2", floor2Spots);
+
+        List<ParkingFloor> floors = new ArrayList<>();
+        floors.add(floor1);
+        floors.add(floor2);
+
+        ParkingLot parkingLot = new ParkingLot(floors);
 
         Vehicle bike1 = new Bike("KA-01-JC-1811");
         Vehicle car1 = new Car("PEA-23-sd234-heli");

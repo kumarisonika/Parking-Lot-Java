@@ -1,20 +1,22 @@
 package com.parkinglot;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class ParkingLot{
 
-    private ArrayList<ParkingSpot> parkingSpots;
+    private List<ParkingFloor> floors;
 
-    ParkingLot(ArrayList<ParkingSpot> parkingSpots){
-        this.parkingSpots = parkingSpots;
+    public ParkingLot(List<ParkingFloor> floors){
+        this.floors = floors;
     }
 
     public ParkingTicket park(Vehicle vehicle){
-        for(ParkingSpot spot: parkingSpots){
-            if(spot.canPark(vehicle)){
+        for(ParkingFloor floor: floors){
+            ParkingSpot spot = floor.getAvailableSpot(vehicle);
+            if(spot!=null) {
                 spot.park(vehicle);
-                return new ParkingTicket(UUID.randomUUID().toString(), vehicle,spot);
+                return new ParkingTicket(UUID.randomUUID().toString(), vehicle, spot);
             }
         }
         return null;
@@ -31,7 +33,4 @@ public class ParkingLot{
         return strategy.calculatePrice(ticket.getParkingDuration());
     }
 
-    ArrayList<ParkingSpot> getParkingLotStats(){
-        return parkingSpots;
-    }
 }
