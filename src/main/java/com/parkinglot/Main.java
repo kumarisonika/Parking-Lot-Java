@@ -21,9 +21,8 @@ public class Main{
 
         System.out.println(parkingTicket_bike.getEntryTime()+" "+parkingTicket_bike.getVehicle().getVehicleNumber());
 
-        parkingLot.unPark(parkingTicket_bike);
-        parkingLot.unPark(parkingTicket_bike);
-
+        System.out.println(parkingLot.unPark(parkingTicket_bike));
+        System.out.println(parkingLot.unPark(parkingTicket_bike));
 
     }
 }
